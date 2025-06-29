@@ -1,0 +1,2 @@
+README. IMPORTANT
+This is simply a placeholder file. When icl.txt is specified as the jailbreaking prompt, we manually create the relevant one-shot example for the relevant question. We do NOT use this file at all.

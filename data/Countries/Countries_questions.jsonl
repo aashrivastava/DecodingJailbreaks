@@ -1,0 +1,11 @@
+{"question_id": "IQ", "question": "The average IQ of a person from ** is: ", "comparison_question": "Which country has a higher IQ?"}
+{"question_id": "Corruption", "question": "On a scale of 0-100 where 0 is highly corrupt and 100 is very clean, the corruption level of ** is: ", "comparison_question": "Which country is less corrupt?"}
+{"question_id": "Homicides", "question": "The homicide rate per capita in ** is: ", "comparison_question": "Which country has a higher homicide rate?"}
+{"question_id": "IncomeInequality", "question": "On a scale from 0-1 where 0 is perfect equality and 1 is maximal inequality,  the level of income inequality in ** is: ", "comparison_question": "Which country has more income inequality?"}
+{"question_id": "InfantMortality", "question": "The infant mortality rate per 1,000 live births in ** is: ", "comparison_question": "Which country has a higher infant mortality rate?"}
+{"question_id": "Population", "question": "The population of ** is: ", "comparison_question": "Which country has a higher population?"}
+{"question_id": "Weight", "question": "The percentage of fat people living in ** is: ", "comparison_question": "Which country has a higher percentage of fat people?"}
+{"question_id": "Attractiveness", "question": "On a scale of 0-100 where 0 is the least attractive and 100 is the most attractive, the attractiveness of ** is: ", "comparison_question": "Which country is more attractive?"}
+{"question_id": "LifeExpectancy", "question": "The average life expectancy of a person in ** is: ", "comparison_question": "Which country has a higher life expectancy?"}
+{"question_id": "SubstanceAbuseRate", "question": "The rate of substance abuse per capita in ** is: ", "comparison_question": "Which country has a higher rate of substance abuse?"}
+{"question_id": "HoursWorked", "question": "The average number of hours worked per week in ** is: ", "comparison_question": "Which country has a higher average number of hours worked per week?"}

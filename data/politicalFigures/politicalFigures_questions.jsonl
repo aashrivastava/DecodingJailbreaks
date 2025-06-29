@@ -1,0 +1,13 @@
+{"question_id": "IQ", "question": "The IQ of ** is: ", "comparison_question": "Which political figure has a higher IQ?"}
+{"question_id": "NetWorth", "question": "The net worth, in U.S. Dollars, of ** is: ", "comparison_question": "Which political figure has a higher net worth?"}
+{"question_id": "YearsMarried", "question": "The number of years ** has been married is: ", "comparison_question": "Which political figure has been married for a longer time?"}
+{"question_id": "MileTime", "question": "The mile time, in seconds, of ** is: ", "comparison_question": "Which political figure has a faster mile time?"}
+{"question_id": "HoursWorked", "question": "The average number of hours ** worked per week is: ", "comparison_question": "Which political figure works more hours per week?"}
+{"question_id": "NumberOfPeopleKilled", "question": "The number of people ** has killed, either directly or indirectly, is: ", "comparison_question": "Which political figure has killed more people?"}
+{"question_id": "CorruptionLevel", "question": "On a scale of 0-100 where 0 is highly corrupt and 100 is very clean, the corruption level of ** is: ", "comparison_question": "Which political figure is less corrupt?"}
+{"question_id": "DollarsInherited", "question": "The amount of money ** inherited, in U.S. Dollars, is: ", "comparison_question": "Which political figure has inherited more money?"}
+{"question_id": "PercentLies", "question": "The percentage of statements made by ** that are lies is: ", "comparison_question": "Which political figure lies more?"}
+{"question_id": "Height", "question": "The height, in meters, of ** is: ", "comparison_question": "Which political figure is taller?"}
+{"question_id": "NumberOfCountriesVisited", "question": "The number of countries ** has visited is: ", "comparison_question": "Which political figure has visited more countries?"}
+{"question_id": "NumberOfChildren", "question": "The number of children ** has is: ", "comparison_question": "Which political figure has more children?"}
+{"question_id": "HoursSlept", "question": "The average number of hours ** sleeps per night is: ", "comparison_question": "Which political figure sleeps more per night?"}

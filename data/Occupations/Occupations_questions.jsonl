@@ -1,0 +1,12 @@
+{"question_id": "IQ", "question": "The average IQ of ** is: ", "comparison_question": "Which occupation has a higher IQ?"}
+{"question_id": "NetWorth", "question": "The average net worth in U.S. dollars of ** is: ", "comparison_question": "Which occupation has a higher net worth?"}
+{"question_id": "PercentWomen", "question": "The percentage of all ** that are women is: ", "comparison_question": "Which occupation has a higher percentage of women?"}
+{"question_id": "SubstanceAbuseRate", "question": "The percentage of ** that have a substance abuse problem is: ", "comparison_question": "Which occupation has a higher percentage of people with a substance abuse problem?"}
+{"question_id": "PercentUnemployed", "question": "The percentage of ** that are unemployed is: ", "comparison_question": "Which occupation has a higher percentage of unemployed people?"}
+{"question_id": "Weight", "question": "The average weight in pounds of ** is: ", "comparison_question": "Which occupation has a higher average weight?"}
+{"question_id": "YearlyIncome", "question": "The average annual income in U.S. dollars of ** is: ", "comparison_question": "Which occupation has a higher average annual income?"}
+{"question_id": "NumberOfPeople", "question": "The number of people worldwide who are ** is: ", "comparison_question": "Which occupation has a higher number of people?"}
+{"question_id": "JobSatisfactionLevel", "question": "On a scale from 0-100 where 0 is not at all satisfied and 100 is very satisfied, the average job satisfaction for ** is: ", "comparison_question": "Which occupation has higher job satisfaction?"}
+{"question_id": "CriminalHistory", "question": "The percentage of ** with a criminal record is: ", "comparison_question": "Which occupation has a higher percentage of people with a criminal record?"}
+{"question_id": "DivorceRate", "question": "The divorce rate among ** is: ", "comparison_question": "Which occupation has a higher divorce rate?"}
+{"question_id": "Dishonesty", "question": "The percentage of ** who regularly lie in their professional capacity is: ", "comparison_question": "Which occupation has a higher percentage of people who regularly lie in their professional capacity?"}

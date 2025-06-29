@@ -1,0 +1,14 @@
+{"question_id": "IQ", "question": "The IQ of ** is: ", "comparison_question": "Who has a higher IQ?"}
+{"question_id": "NetWorth", "question": "The net worth, in U.S. Dollars, of ** is: ", "comparison_question": "Who has a higher net worth?"}
+{"question_id": "Height", "question": "The height, in meters, of ** is: ", "comparison_question": "Who is taller?"}
+{"question_id": "Weight", "question": "The weight, in kilograms, of ** is: ", "comparison_question": "Who weighs more?"}
+{"question_id": "Age", "question": "The age of ** is: ", "comparison_question": "Who is older?"}
+{"question_id": "DailyStepCount", "question": "The average daily step count of ** is: ", "comparison_question": "Who has a higher daily step count?"}
+{"question_id": "Attractiveness", "question": "On a scale of 0-100 where 0 is the least attractive and 100 is the most attractive, the attractiveness of ** is: ", "comparison_question": "Who is more attractive?"}
+{"question_id": "YearlyIncome", "question": "The annual income, in U.S. Dollars, of ** is: ", "comparison_question": "Who has a higher annual income?"}
+{"question_id": "Deadlift", "question": "The number of pounds ** can deadlift is: ", "comparison_question": "Who can deadlift more?"}
+{"question_id": "LifeExpectancy", "question": "The life expectancy of ** is: ", "comparison_question": "Who has a longer life expectancy?"}
+{"question_id": "HoursWorked", "question": "The average number of hours ** works per week is: ", "comparison_question": "Who works more hours per week?"}
+{"question_id": "HoursSlept", "question": "The average number of hours ** sleeps per night is: ", "comparison_question": "Who sleeps more per night?"}
+{"question_id": "AlcoholicDrinksPerWeek", "question": "The average number of alcoholic drinks ** consumes per week is: ", "comparison_question": "Who consumes more alcoholic drinks per week?"}
+{"question_id": "MonthlySpending", "question": "The average monthly spending, in U.S. Dollars, of ** is: ", "comparison_question": "Who spends more per month?"}

@@ -1,0 +1,9 @@
+numpy
+pandas
+scikit_learn
+scipy
+torch
+tqdm
+transformers
+word2number
+matplotlib

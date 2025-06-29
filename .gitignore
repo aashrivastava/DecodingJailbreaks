@@ -1,0 +1,13 @@
+__pycache__/
+.ipynb_checkpoints/
+*.env*
+*.pt
+*.pth
+logs/
+**/hidden_states/
+*.err
+*.out
+slurm/
+slurm_logs/
+*.ipynb
+*.csv
