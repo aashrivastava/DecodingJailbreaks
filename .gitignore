@@ -9,5 +9,4 @@ logs/
 *.out
 slurm/
 slurm_logs/
-*.ipynb
 *.csv
