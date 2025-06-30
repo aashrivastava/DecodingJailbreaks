@@ -20,10 +20,9 @@ if [ "$#" -lt 4 ]; then
     exit 1
 fi
 
-BASE_MODEL=$1
-INSTRUCT_MODEL=$2
-ENTITY=$3
-ATTRIBUTE=$4
+MODEL=$1
+ENTITY=$2
+ATTRIBUTE=$3
 
 # ============================================
 # Check for -v or --verbose flag anywhere in args
