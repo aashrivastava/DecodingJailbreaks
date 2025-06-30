@@ -1,5 +1,5 @@
-# INSERT TITLE
-This is the official code for our paper: "TITLE" by Aryan Shrivastava and Ari Holtzman. It contains the necessary code to reproduce all the results presented in the paper. 
+# Linearly Decoding Refused Knowledge in Aligned Language Models
+This is the official code for our paper: "Linearly Decoding Refused Knowledge in Aligned Language Models" by Aryan Shrivastava and Ari Holtzman. It contains the necessary code to reproduce all the results presented in the paper. 
 The link to the paper will be made available here once public on arXiv.
 
 ## Setup and Prerequisities
@@ -33,7 +33,7 @@ python create_data.py -e Occupations Countries politicalFigures syntheticNames -
 
 ## Reproducing Results
 ### Preliminaries
-Once we have created the core datasets, we may continue with the main analysis. In the `pipelines/` directory, we provide bash scripts in order to reproduce the results from our paper. Each bash script corresponds to a section in the paper, as noted by the title (e.g., `pipelines/sec3.sh`). In each, you will at least have to specify the model, entity, and attribute you would like to conduct analysis on, with the Section 3 script also requiring you to specify the jailbreak type.
+Once we have created the core datasets, we may continue with the main analysis. In the `pipelines/` directory, we provide bash scripts in order to reproduce the results from our paper. Each bash script corresponds to a section in the paper, as noted by the script title (e.g., `pipelines/sec3.sh`). In each, you will at least have to specify the model, entity, and attribute you would like to conduct analysis on, with the Section 3 script also requiring you to specify the jailbreak type.
 
 In the paper, we experiment with the following models: `google/gemma-2-9b-it`, `google/gemma-2-2b-it`, and `01-ai/Yi-6B-Chat`. Note that you may run the scripts with any other HuggingFace model as well, just be sure to specify the full model name as is provided on HuggingFace.
 
@@ -77,4 +77,4 @@ This pipeline performs the following steps:
 The plotting code is provided in `plotting.ipynb`.
 
 ## Citing Our Work
-If you found the paper or code useful, please consider citing us. The BibTeX will be available upon publication on arXiv.
+If you found the paper or code useful, please consider citing us. The BibTeX will be available upon publication on arXiv. Information about correspondence 
