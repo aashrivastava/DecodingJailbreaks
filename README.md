@@ -1,95 +1,80 @@
 # INSERT TITLE
-This is the official code for our paper: "TITLE" (arxiv link) by Aryan Shrivastava and Ari Holtzman.
-
-TODO: MAKE A BASH SCRIPT FOR THE ENTIRE PIPELINE, IT WILL BE EASY (at least for the non bradley-terry stuff)
-
-This repository contains the necessary code to reproduce the results in the paper, from dataset generation, to probe training, to evaluation.
+This is the official code for our paper: "TITLE" by Aryan Shrivastava and Ari Holtzman. It contains the necessary code to reproduce all the results presented in the paper. 
+The link to the paper will be made available here once public on arXiv.
 
 ## Setup and Prerequisities
-TODO
+### 1. Setting up a Virtual Environment
+We highly setting up this project within a virtual environment. This can be done as follows:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+This also activates your virtual environment.
 
-## Initial Methodology Details
-We ground our analysis across four entity types: Countries, Occupations, Political Figures, and Synthetic Names.
-Each entity type is associated with a set of attributes. For example, we ask an LM for a country's average IQ or an occupation's average substance abuse rate.
+### 2. Installing Necessary Packages
+Once your virtual environment is setup and activated, you can install the required packages with:
+```bash
+pip install -r requirements.txt
+```
 
-## Data Construction
-You can directly create the relevant datasets by running the below script. This reads from the pre-defined entity list and associated questions for each attribute and saves a .csv into `data/{entity_type}/{entity_type}{attribute}`.
+### 3. Note on API Keys
+As this paper makes use of gated models from HuggingFace, you will need to configure a HuggingFace User Access Token. Here is a link to steps on how to do this: [link](https://huggingface.co/docs/hub/en/security-tokens).
+
+## Data
+We conduct our analysis over four entity types: Countries, Occupations, Political Figures, and Synthetic Names. Each entity type is associated with its own set of attributes. For example, country IQ or occupation divorce rate. The first step is to create the initial datasets for each entity-attribute pair as these will serve as the core hubs for our experiments:
 ```bash
 python create_data.py -e Occupations Countries politicalFigures syntheticNames
 ```
-
-To create the data for the experiments run in Section 5 of the paper run:
+This creates datasets used in Section 3 and Section 4 of our paper. To create the datasets used in Section 5, where we analyze the correlation between probed representations and implicit pairwise comparisons, run:
 ```bash
 python create_data.py -e Occupations Countries politicalFigures syntheticNames -p
 ```
 
-For each entity type, this creates .csv with the individual entities and associated questions for each attribute. 
-This allows us to continue onto generating the responses.
 
-## Getting Model Responses
-Run this script to get and parse model responses. These are used as the labels to the probes.
+## Reproducing Results
+### Preliminaries
+Once we have created the core datasets, we may continue with the main analysis. In the `pipelines/` directory, we provide bash scripts in order to reproduce the results from our paper. Each bash script corresponds to a section in the paper, as noted by the title (e.g., `pipelines/sec3.sh`). In each, you will at least have to specify the model, entity, and attribute you would like to conduct analysis on, with the Section 3 script also requiring you to specify the jailbreak type.
+
+In the paper, we experiment with the following models: `google/gemma-2-9b-it`, `google/gemma-2-2b-it`, and `01-ai/Yi-6B-Chat`. Note that you may run the scripts with any other HuggingFace model as well, just be sure to specify the full model name as is provided on HuggingFace.
+
+We also experiment with two jailbreak types: `icl.txt` (the ICL prompt) and `machiavelli.txt` (the AIM prompt).
+
+In the provided commands below, we use `google/gemma-2-9b-it` as the example model, `Occupations` as the example entity, `IQ` as the example attribute, and `icl.txt` as the example jailbreak type. 
+
+### Section 3: Linear Probes Can Recover Jailbroken Responses
 ```bash
-python get_generations.py -m $MODEL -e $ENTITY -q $ATTRIBUTE -s -j $icl/machiavelli.txt -b something
-python parse_generations.py -m $MODEL -e $ENTITY -q $ATTRIBUTE
+bash sec3.sh google/gemma-2-9b-it icl.txt Occupations IQ
 ```
+This pipeline performs the following steps:
+1) Get and parse the jailbroken generations from the model when asked for the average IQ of an occupation.
+2) Get the:
+    - Innocuous hidden states
+    - Jailbreak specific hidden states
+3) Train linear probes to predict the generations from the hidden states. 
+4) Save the predictions to the `results` directory, within `data/Occupations/OccupationsIQ` in `OccupationsIQ_gemma-2-9b-it_icl_main.csv` and `OccupationsIQ_gemma-2-9b-it_icl_specific.csv`.
 
-If you are running the Section 4 experiments, we do not jailbreak. Run:
+### Section 4: Linear Probes Transfer from Base to Instruction-Tuned Models
 ```bash
-python get_generations.py -m $MODEL -e $ENTITY -q $ATTRIBUTE -s -b something
-python parse_generations.py -m $MODEL -e $ENTITY -q $ATTRIBUTE
+bash sec4.sh google/gemma-2-9b-it google/gemma-2-9b Occupations IQ
 ```
+This pipeline performs the following steps:
+1) Gets and parses the relevant generations from the base model.
+2) Gets the innocuous hidden states from the base model.
+3) Train linear probes on the base model hidden states and generations. 
+4) Applies the linear probes to the instruction-tuned model's hidden states and saves predictions to the `results` directory, within `data/Occupations/OccupationsIQ` in `OccupationsIQ_gemma-2-9b_base_to_instruct.csv`.
 
-If you are running the Section 5 experiments, we run:
+Note that this pipeline assumes you have already ran the Section 3 pipeline for the same model, entity, and attribute combination.
+
+### Section 5: Probed Representations Align with Generated Comparative Preferences
 ```bash
-python get_generations.py -m $MODEL -e $ENTITY -q $ATTRIBUTE -b something -s -p -c prompt -j icl.txt
-python parse_generations.py -m $MODEL -e $ENTITY -q $ATTRIBUTE -j icl.txt -p
+bash sec5.sh google/gemma-2-9b-it Occupations IQ
 ```
-Technically, can do different jailbreak for getting generations like (-j machiavelli_comparisons.txt) but we don't do this in the paper.
+This pipeline performs the following steps:
+1) Gets and parses relevant generations from the model (in this case, its answers to 15,000 samples of which out of two occupations has a higher IQ).
+2) Runs a bradley-terry model to obtain the model's latent rankings.
 
-We also have checkpointing behavior, where if you have compute constraints, you can spread generation over 5 steps of 3000 generations each:
-```bash
-python get_generations.py -m $MODEL -e $ENTITY -q $ATTRIBUTE -b something -s -p -c prompt -j icl.txt --checkpointing --chunk_number $one_of_0_through_4
-```
-where you may submit this over multiple separate jobs, ensuring that the next chunk only begins after the previous one completes.
-After chunk number 4 completes, you may parse as above. 
+### Plotting
+The plotting code is provided in `plotting.ipynb`.
 
-## Getting Model Hidden States
-Run this script to obtain the innocous last token hidden states:
-```bash
-python get_hidden_states.py -m $MODEL -e $ENTITY -b something
-```
-
-If you would like jailbreak specific hidden states:
-```bash
-python get_hidden_states.py -m $MODEL -e $ENTITY -q $DATASET -j icl/machiavelli.txt -b something
-```
-
-## Training and Evaluating Probes
-Once we obtain the relevant hidden states and hidden states, we can train and evaluate our probes!
-Running the following scripts will train probes for each layer in the model and then save their predictions alongside the true model generations in the `data/{entity_type}/{entity_type}{attribute}/results` directory.
-If training and evaluating probes on the jailbroken generations and innocuous hidden states, run:
-```bash
-python probes.py -m $MODEL -e $ENTITY -q $DATASET -l $MODEL_$[jailbreak]Jailbreak_response_parsed --experiment_name {MODEL}_{jailbreak}_main
-```
-
-If training and evaluating probes on the jailbroken generations and specific hidden states, run:
-```bash
-python probes.py -m $MODEL -e $ENTITY -q $DATASET -l $MODEL_$[jailbreak]Jailbreak_response_parsed --experiment_name {MODEL}_{jailbreak}_specific --probe_specific $icl/machiavelli.txt
-```
-
-If training and evaluating probes for base to instruction-tuned transfer, run:
-```bash
-python probes.py -m $BASE_MODEL -e $ENTITY -q $DATASET -l $MODEL_response_parsed --probe_across $INSTRUCT_MODEL --experiment_name {BASE_MODEL}_base_to_instruct
-```
-
-THAT'S IT! Then, we can plot, but whatever, we have results, you can figure out plotting. 
-
-## Running Bradley Terry
-We have already provided the steps for obtaining the pairwise comparison generations above. Now, we need to run the bradley_terry so we can get the implicit ranking of the LLM:
-```bash
-python bradley_terry.py -m $MODEL -e $ENTITY -q $ATTRIBUTE -j icl.txt
-```
-
-Assuming we already have the probe results from before, all we need to do is get the correlations now, which we can do in the plotting code:
-
-## Plotting Results!
+## Citing Our Work
+If you found the paper or code useful, please consider citing us. The BibTeX will be available upon publication on arXiv.
