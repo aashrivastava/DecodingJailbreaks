@@ -1,6 +1,5 @@
 # Linearly Decoding Refused Knowledge in Aligned Language Models
-This is the official code for our paper: "Linearly Decoding Refused Knowledge in Aligned Language Models" by Aryan Shrivastava and Ari Holtzman. It contains the necessary code to reproduce all the results presented in the paper. 
-The link to the paper will be made available here once public on arXiv.
+This is the official code for our paper: [Linearly Decoding Refused Knowledge in Aligned Language Models](https://arxiv.org/abs/2507.00239) by Aryan Shrivastava and Ari Holtzman. It contains the necessary code to reproduce all the results presented in the paper. 
 
 ## Setup and Prerequisities
 ### 1. Setting up a Virtual Environment
@@ -77,4 +76,12 @@ This pipeline performs the following steps:
 The plotting code is provided in `plotting.ipynb`.
 
 ## Citing Our Work
-If you found the paper or code useful, please consider citing us. The BibTeX will be available upon publication on arXiv. Information about correspondence 
+If you found the paper or code useful, please consider citing us:
+```
+@article{shrivastava2025linearly,
+  title={Linearly Decoding Refused Knowledge in Aligned Language Models},
+  author={Shrivastava, Aryan and Holtzman, Ari},
+  journal={arXiv preprint arXiv:2507.00239},
+  year={2025}
+}
+```
