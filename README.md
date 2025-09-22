@@ -85,3 +85,15 @@ If you found the paper or code useful, please consider citing us:
   year={2025}
 }
 ```
+
+## Acknowledgment
+`bradley_terry.py` is wholly attributed to:
+@article{lamparth2025movingmedicalexamquestions,
+  title={Moving Beyond Medical Exam Questions: A Clinician-Annotated Dataset of Real-World Tasks and Ambiguity in Mental Healthcare},
+  author={Lamparth, Max and Grabb, Declan and Franks, Amy and Gershan, Scott and Kunstman, Kaitlyn N. and Lulla, Aaron and Drummond Roots, Monika and Sharma, Manu and Shrivastava, Aryan and Vasan, Nina and Waickman, Colleen},
+  journal={arXiv preprint arXiv:2502.16051},
+  year={2025},
+  url={https://arxiv.org/abs/2502.16051}
+}
+
+Slight modifications to the original code were made to make it work with the new dataset structure.
